@@ -49,39 +49,36 @@ let selectorGenero = document.querySelector('#Genero')
 let selectorColor = document.querySelector('#Color')
 
 //agregamos el evento a los selectores
-selectorGenero.addEventListener('change',filtrado)
-selectorColor.addEventListener('change', filtrado)
+selectorGenero.addEventListener('change',filtroGenero)
+selectorColor.addEventListener('change', filtroColor)
 
 //leo los valores
 
-// const valorSeleccionadoGenero = selectorGenero.value;
-// const valorSeleccionadoColor = selectorColor.value;
-// console.log(valorSeleccionadoGenero)
-// console.log(valorSeleccionadoColor)
+const valorSeleccionadoGenero = selectorGenero.value;
+const valorSeleccionadoColor = selectorColor.value;
+console.log(valorSeleccionadoGenero)
+console.log(valorSeleccionadoColor)
 
 //funciones de los botones
 
-// function filtroGenero(){
-//   const valorSeleccionadoGenero = selectorGenero.value;
-//   console.log(valorSeleccionadoGenero)
-//   return valorSeleccionadoColor
+function filtroGenero(){
+  const valorSeleccionadoGenero = selectorGenero.value;
+  console.log(valorSeleccionadoGenero)
+  return
   
-// }
-// function filtroColor(){
-//   const valorSeleccionadoColor = selectorColor.value;
-//   console.log(valorSeleccionadoColor)
-//   return valorSeleccionadoColor
-// }
+}
+function filtroColor(){
+  const valorSeleccionadoColor = selectorColor.value;
+  console.log(valorSeleccionadoColor)
+  return
+}
 
 
 function filtrado(){
-  const valorSeleccionadoColor = selectorColor.value;
-  const valorSeleccionadoGenero = selectorGenero.value;
-  
   console.log(valorSeleccionadoColor)
   console.log(valorSeleccionadoGenero)
-  const arrayFiltrado = remeras.filter(productosFiltrados => productosFiltrados.genero === valorSeleccionadoGenero && productosFiltrados.color === valorSeleccionadoColor  )
+  const arrayFiltrado = remeras.filter(productosFiltrados => productosFiltrados.genero === "hombre" & productosFiltrados.color == "verde"  )
   console.log(arrayFiltrado)
 }
 
-// filtrado()
+filtrado()
