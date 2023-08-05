@@ -43,42 +43,34 @@ function render (renderRemeras){
 }
 render(remeras)
 
-//capturamos los selecotores
-
-let selectorGenero = document.querySelector('#Genero')
-let selectorColor = document.querySelector('#Color')
-
-//agregamos el evento a los selectores
-// selectorGenero.addEventListener('change',filtroGenero)
-// selectorColor.addEventListener('change', filtroColor)
-
-//leo los valores
-
-// const valorSeleccionadoGenero = selectorGenero.value;
-// const valorSeleccionadoColor = selectorColor.value;
-// console.log(valorSeleccionadoGenero)
-// console.log(valorSeleccionadoColor)
-
-//funciones de los botones
-
-// function filtroGenero(){
-//   const valorSeleccionadoGenero = selectorGenero.value;
-//   console.log(valorSeleccionadoGenero)
-//   return
-  
-// }
-// function filtroColor(){
-//   const valorSeleccionadoColor = selectorColor.value;
-//   console.log(valorSeleccionadoColor)
-//   return
-// }
 
 
-function filtrado(genero, color){
-  // console.log(valorSeleccionadoColor)
-  // console.log(valorSeleccionadoGenero)
-  const arrayFiltrado = remeras.filter(productosFiltrados => productosFiltrados.genero === genero && productosFiltrados.color === color  )
-  console.log(arrayFiltrado)
+
+const generoSelect = document.getElementById('Genero');
+const colorSelect = document.getElementById('Color');
+
+generoSelect.addEventListener('change', filtrarRemeras);
+colorSelect.addEventListener('change', filtrarRemeras);
+
+function filtrarRemeras() {
+    const generoSeleccionado = generoSelect.value;
+    const colorSeleccionado = colorSelect.value;
+    if(generoSeleccionado === "Genero" && colorSeleccionado === "Color"){
+      render(remeras)
+    }else{
+      if(generoSeleccionado === "Genero"){
+        const filtroColor = remeras.filter(remera => remera.color === colorSeleccionado)
+        render(filtroColor)
+      }else if (colorSeleccionado === "Color"){
+        const filtroGenero = remeras.filter(remera => remera.genero === generoSeleccionado)
+        render(filtroGenero)
+      }else{
+        console.log("Selecion completa")
+        const filtro = remeras.filter(remera => remera.genero === generoSeleccionado && remera.color === colorSeleccionado);
+        console.log(filtro)
+        render(filtro)
+    }
+  }
 }
 
-filtrado("hombre", "verde")
+
